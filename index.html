@@ -11,14 +11,14 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #fff0f5; /* 浪漫的淡紫粉色背景 */
+            background-color: #fff0f5;
             font-family: 'Noto Serif SC', serif;
             color: #5a3d46;
             overflow-x: hidden;
         }
         
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 50px auto;
             background: rgba(255, 255, 255, 0.85);
             padding: 40px;
@@ -42,7 +42,7 @@
             line-height: 1.8;
             margin-bottom: 40px;
             text-align: left;
-            padding: 20px;
+            padding: 25px;
             background: #ffeaa7;
             border-radius: 15px;
             border-left: 5px solid #fdcb6e;
@@ -52,35 +52,51 @@
         .gallery {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
+            gap: 25px;
+            flex-wrap: wrap; /* 自动换行 */
         }
 
         .photo-card {
             background: white;
             padding: 15px;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            width: calc(50% - 30px);
-            min-width: 250px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: calc(50% - 35px); /* 每行放两张 */
+            min-width: 280px;
+            box-sizing: border-box;
         }
 
         .photo-card:hover {
-            transform: scale(1.05); /* 鼠标悬浮时微微放大 */
+            transform: translateY(-5px) scale(1.02); /* 悬浮时上浮放大 */
+            box-shadow: 0 15px 25px rgba(232, 67, 147, 0.2);
         }
 
         .photo-card img {
             width: 100%;
-            border-radius: 5px;
+            height: auto;
+            border-radius: 8px;
             display: block;
+            object-fit: cover;
         }
 
         .caption {
-            margin-top: 10px;
-            font-size: 0.9em;
+            margin-top: 15px;
+            font-size: 1em;
             color: #636e72;
             font-weight: bold;
+        }
+
+        /* 底部浪漫结语 */
+        .ending-text {
+            margin-top: 50px;
+            font-size: 1.5em;
+            color: #e84393;
+            font-weight: bold;
+            font-style: italic;
+            text-shadow: 1px 1px 3px rgba(232, 67, 147, 0.15);
+            padding-top: 20px;
+            border-top: 2px dashed #ffb8b8; /* 虚线分隔符 */
         }
 
         /* 飘落爱心背景动画 */
@@ -105,11 +121,21 @@
             20% { opacity: 0.8; transform: translateY(10vh) scale(1); }
             100% { transform: translateY(110vh) scale(1.5); opacity: 0; }
         }
+        
+        /* 手机端适配：屏幕变窄时，一行只放一张照片 */
+        @media (max-width: 600px) {
+            .photo-card {
+                width: 100%;
+            }
+            .container {
+                padding: 20px;
+                margin: 20px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- 飘落的爱心背景 -->
     <div class="hearts">
         <div class="heart" style="left: 10%; animation-delay: 0s;">💖</div>
         <div class="heart" style="left: 30%; animation-delay: 2s;">✨</div>
@@ -119,27 +145,80 @@
     </div>
 
     <div class="container">
-        <h1>致我最爱的女孩 💖</h1>
+        <h1>致我最爱的小太 💖</h1>
         
         <div class="message">
             
-亲爱的，<br><br>
-很高兴能与你相遇。在这个特别的日子里，想用一种特别的方式把我们的回忆记录下来。<br><br>
-感谢你出现在我的生命里，每一天因为你而变得格外闪耀。无论未来怎样，我都想牵着你的手一起走下去。<br><br>
-永远爱你的，[你的名字]
-
+亲爱的宝宝，<br><br>
+很高兴能与你相遇。今天在思考我该怎么样呈现我的研究成果时，突然想到可以用网页来记录一些我们的回忆，我想这也是一种很特别的方式吧。<br><br>
+感谢你出现在我的生命里，从我遇见你开始，我的人生就开始变得不同，我们开始出去吃饭，第一次在图书馆自习，第一次牵手，第一次一起出去旅游，第一次一起在床上运动嘿嘿嘿......我和你一起解锁了太多我人生中的第一次，和你在一起之后，每一天因为你而变得格外的充实和记忆深刻。无论下一次我们是在哪里见面，我都好想再次牵你的手，再次抱抱你，再次吻你。期待和你的下次见面宝宝<br><br>
+永远爱你的小业子
         </div>
 
         <div class="gallery">
-            <div class="photo-card">
-                <!-- 这里读取你在 Colab 上传的照片 -->
-                <img src="photo1.jpg" alt="照片1">
-                <div class="caption">第一次的旅行 ✈️</div>
-            </div>
-            <div class="photo-card">
-                <img src="photo2.jpg" alt="照片2">
-                <div class="caption">最开心的瞬间 😊</div>
-            </div>
+            
+        <div class="photo-card">
+            <img src="微信图片_20260402175745_84_156.jpg" alt="京都 ">
+            <div class="caption">京都 </div>
+        </div>
+    
+        <div class="photo-card">
+            <img src="微信图片_20260402175722_71_156.jpg" alt="森林中的咖啡馆 ">
+            <div class="caption">森林中的咖啡馆 </div>
+        </div>
+    
+        <div class="photo-card">
+            <img src="微信图片_20260402175741_82_156.jpg" alt="海之中道 ">
+            <div class="caption">海之中道 </div>
+        </div>
+    
+        <div class="photo-card">
+            <img src="微信图片_20260402175743_83_156.jpg" alt="太宰府">
+            <div class="caption">太宰府 </div>
+        </div>
+        <div class="photo-card">
+            <img src="微信图片_20260402175739_81_156.jpg" alt="海边的cafe ">
+            <div class="caption">海边的cafe</div>
+        </div>
+    
+        <div class="photo-card">
+            <img src="微信图片_20260402175737_80_156.jpg" alt="银杏树下的枫 ">
+            <div class="caption">银杏树下的枫 </div>
+        </div>
+	<div class="photo-card">
+            <img src="微信图片_20260402175735_79_156.jpg" alt="中州">
+            <div class="caption">中州 </div>
+        </div>
+       <div class="photo-card">
+            <img src="微信图片_20260402175731_77_156.jpg" alt="博多运河城">
+            <div class="caption">博多运河城 </div>
+        </div>
+        <div class="photo-card">
+            <img src="微信图片_20260402175727_75_156.jpg" alt="白须瀑布 ">
+            <div class="caption">白须瀑布</div>
+        </div>
+        <div class="photo-card">
+            <img src="微信图片_20260402175729_76_156.jpg" alt="牧场">
+            <div class="caption">牧场</div>
+	 </div>
+        <div class="photo-card">
+            <img src="微信图片_20260402175724_73_156.jpg" alt="二戏海之中 ">
+            <div class="caption">二戏海之中 </div>
+        </div>
+        <div class="photo-card">
+            <img src="微信图片_20260402175723_72_156.jpg" alt="能古岛前">
+            <div class="caption">能古岛前</div>
+        </div>
+	</div>
+        <div class="photo-card">
+            <img src="微信图片_20260402175725_74_156.jpg" alt="能古岛">
+            <div class="caption">能古岛</div>
+        </div>
+        </div>
+        
+        <!-- 下一次我们会去哪里呢？ -->
+        <div class="ending-text">
+            下一次我们会去哪里呢？ ✨
         </div>
     </div>
 
